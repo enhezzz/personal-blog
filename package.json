@@ -1,23 +1,36 @@
 {
   "name": "hello-world",
   "version": "0.1.0",
+  "createDate": "2018-10-19",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "server": "nodemon server/app.js"
   },
   "dependencies": {
+    "express": "^4.16.4",
+    "moment": "^2.22.2",
+    "mongoose": "^5.3.5",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
+    "vue-wangeditor-simple": "^1.5.55",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "@voerro/vue-tagsinput": "^1.9.1",
     "@vue/cli-plugin-babel": "^3.0.5",
     "@vue/cli-plugin-eslint": "^3.0.5",
     "@vue/cli-service": "^3.0.5",
+    "body-parser": "^1.18.3",
+    "fetch-mock": "^7.2.0",
+    "formidable": "^1.2.1",
+    "mongoose": "^5.3.6",
     "node-sass": "^4.9.0",
+    "qiniu": "^7.2.1",
     "sass-loader": "^7.0.1",
+    "uuid": "^3.3.2",
     "vue-template-compiler": "^2.5.17"
   }
 }
