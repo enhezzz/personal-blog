@@ -41,9 +41,15 @@
         </div>
 </template>
 <script>
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 export default {
     created: function(){
-        this.request(this.$route);
+        NProgress.start()
+        this.request(this.$route).then(res=>{
+            NProgress.done()
+        });
+
     },
     data: function(){
         return {

@@ -13,6 +13,7 @@
     "express": "^4.16.4",
     "moment": "^2.22.2",
     "mongoose": "^5.3.5",
+    "nprogress": "^0.2.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-wangeditor-simple": "^1.5.55",

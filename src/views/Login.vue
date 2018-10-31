@@ -26,7 +26,14 @@
     
 </template>
 <script>
+import NProgress from 'nprogress'
 export default {
+    beforeRouteEnter (to, from, next) {
+        NProgress.start()
+        next(vm => {
+            NProgress.done()
+        })
+    },
     methods: {
         async login(){
             this.$store.commit('toggleLoading');

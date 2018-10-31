@@ -47,7 +47,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 footer" ref="footer">123</div>
+        <div class="col-12 footer" ref="footer"></div>
       </div>
       
     </div>
@@ -55,14 +55,10 @@
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import NProgress from 'nprogress'
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld
-  },
   mounted: function(){
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries[0].intersectionRatio <= 0) return;
@@ -77,8 +73,10 @@ export default {
     console.log(this.$refs.footer)
   },
   created: function(){
+      NProgress.start()
       this.getPost().then(posts=>{
           this.posts.push(...posts);
+          NProgress.done()
       })
 
   },
@@ -184,5 +182,8 @@ export default {
 .fa-github{
   color: #000;
   text-decoration: none;
+}
+.footer{
+  height: 3px;
 }
 </style>
