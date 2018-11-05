@@ -109,7 +109,9 @@ export default {
           let keyword = e.target.value.trim();
           this.$router.push({path: '/search',query: {keyword}});
       },
-      logout(){
+      async logout(){
+          let request = new Request('/logout');
+          await fetch(request).then(response=> true);
           this.$store.commit('toggleLoginState',false);
           this.$router.push('/login');
           if(this.$store.state.code == 1)

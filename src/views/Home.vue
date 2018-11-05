@@ -73,7 +73,7 @@ export default {
     console.log(this.$refs.footer)
   },
   created: function(){
-      NProgress.start()
+      NProgress.start();
       this.getPost().then(posts=>{
           this.posts.push(...posts);
           NProgress.done()
