@@ -17,6 +17,10 @@ const schema = new Schema({
   phone: {
       type: String,
       default: '00000000000'
+  },
+  code: {
+      type: Number,
+      default: 0
   }
 });
 module.exports = schema;
