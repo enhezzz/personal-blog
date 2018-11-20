@@ -1,0 +1,19 @@
+.login{
+    margin-top: 200px;
+    justify-content: center
+}
+/* .login>.login-header>h3{
+    width: 66%;
+    margin: 0 auto
+} */
+.alert-success,.alert-danger{
+    position: absolute;
+    top: 198px;
+    visibility: hidden;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+    animation-timing-function: ease-in
+}
+.show{
+    visibility: visible
+}

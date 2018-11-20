@@ -1,0 +1,33 @@
+.content>.card:hover{
+    animation: pulse 1s both;
+    text-decoration: none;
+}
+.content .card-header{
+    text-align: left;
+}
+.content .card-header>span{
+    display: inline-block;
+    margin-right: 10px;
+}
+.content .card-header>span.fa-eye{
+    float: right;
+    color: rgb(198,198,198);
+}
+.content .card-body{
+    color: #7f7f7f;
+}
+.content .card-body>.card-text{
+    text-align: left;
+    text-indent: 49px;
+}
+.notallow{
+    cursor: not-allowed !important;
+}
+.pagination-input{
+    display: flex;
+    align-items: center;
+}
+.pagination-input>input[type='text']{
+    text-align: center;
+    width: 34px;
+}

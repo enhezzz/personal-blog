@@ -1,0 +1,42 @@
+.nodisplay{
+    display: none
+}
+.main label{
+    display: block;
+}
+.main label>.theme{
+    display: block;
+    line-height: 37px;
+    padding: 0 0 0 10px;
+    cursor: pointer;
+}
+.main .blog-theme{
+    position: relative;
+}
+.main input[type='checkbox']+.items{
+    height: 0;
+    overflow: hidden;
+    transition: all 0.35s ease;
+    background: #eee
+}
+.main input[type='checkbox']:checked+.items{
+    height: 105px;
+    padding: 10px 0 10px 10px
+}
+.main input[type='checkbox']+.items>.item{
+    min-height: 35px;
+}
+.main input[type='checkbox']+.items>.item>a{
+    display: block;
+    height: 100%;
+    /* line-height: 100%; */
+}
+.main>aside{
+    background: rgba(255,255,255,.6);
+    border-radius: 14px;
+    height: 92vh;
+    position: fixed;
+}
+.router-link-active{
+    background: rgba(221,221,221,.7);
+}

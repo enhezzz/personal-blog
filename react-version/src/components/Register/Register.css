@@ -1,0 +1,10 @@
+.register{
+    margin-top: 138px;
+    justify-content: center
+}
+.register-body{
+    text-align: left;
+}
+.invalid-feedback{
+    display: block;
+}
