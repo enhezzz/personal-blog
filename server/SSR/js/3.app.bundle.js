@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[3],{347:function(e,n,t){"use strict";t.r(n);var r=t(49),s=Object(r.a)({},function(){var e=this.$createElement;return(this._self._c||e)("h3",[this._v("你没有权限哦~~")])},[],!1,null,null,null);s.options.__file="Error.vue";n.default=s.exports}}]);

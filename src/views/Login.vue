@@ -28,12 +28,14 @@
 <script>
 import NProgress from 'nprogress'
 export default {
-    beforeRouteEnter (to, from, next) {
-        NProgress.start()
-        next(vm => {
-            NProgress.done()
-        })
-    },
+    // beforeRouteEnter (to, from, next) {
+    //     // if(window)
+    //     // NProgress.start()
+    //     // next(vm => {
+    //     //     if(window)
+    //     //     NProgress.done()
+    //     // })
+    // },
     methods: {
         async login(){
             this.$store.commit('toggleLoading');

@@ -24,17 +24,25 @@
 </template>
 <script>
 export default {
-    created() {
-        let postId = this.$route.params.id;
-        let request = new Request(`/post?id=${postId}`);
-        fetch(request).then(response => response.json())
-            .then(post => {
-                this.post = post;
-            })
+    asyncData({store, route}) {
+      return store.dispatch('blog/getPost', route)
     },
-    data(){
-        return {
-            post: {}
+    created() {
+        // let postId = this.$route.params.id;
+        // let request = new Request(`/post?id=${postId}`);
+        // fetch(request).then(response => response.json())
+        //     .then(post => {
+        //         this.post = post;
+        //     })
+    },
+    // data(){
+    //     return {
+    //         post: {}
+    //     }
+    // },
+    computed: {
+        post() {
+            return this.$store.state.blog.post;
         }
     }
 }

@@ -30,19 +30,32 @@
     </div>
 </template>
 <script>
+import blogModule from '../../store/blog'
 export default {
-    created(){
-        let request = new Request('/blogList');
-        fetch(request).then(response=> response.json())
-            .then(list=>{
-                this.list.push(...list);
-            })
+    asyncData({store}){
+        store.registerModule('blog',blogModule)
+        return store.dispatch('blog/getBlogList')
     },
-    data(){
-        return {
-            list: []
-        }
-    }
+    created(){
+        // let request = new Request('/blogList');
+        // fetch(request).then(response=> response.json())
+        //     .then(list=>{
+        //         this.list.push(...list);
+        //     })
+    },
+    destroyed(){
+        this.$store.unregisterModule('blog');
+    },
+    computed: {
+      list(){
+          return this.$store.state.blog.list;
+      }
+    },
+    // data(){
+    //     return {
+    //         list: []
+    //     }
+    // }
 }
 </script>
 <style scoped>

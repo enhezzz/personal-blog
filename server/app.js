@@ -19,6 +19,7 @@ app.use(sessionParser)
 // const bodyParser = require('body-parser');
 // app.use(bodyParser.urlencoded({ extended: false }))
 // app.use(bodyParser.json())
+
 app.use(loginRouter);
 app.use(registerRouter);
 app.use(uploadRouter);
@@ -44,6 +45,37 @@ app.get('/logout',(req,res)=>{
         res.cookie('sessionId',sessionId,{maxAge: 0}).end();
     }else res.end()
 })
+
+//handle static files
+app.use(express.static(path.join(__dirname,'./SSR/js')))
+
+
+
+
+
+//SSR
+//声明window = undefined，因为在组件的声明周期上用到了有关浏览器的api
+window = undefined
+const renderer = require('vue-server-renderer').createRenderer({
+    template: require('fs').readFileSync(path.join(__dirname,'./SSR/index.html'),'utf-8')
+});
+const createApp = require('./SSR/dist/app.bundle.js').default;
+app.get('*',(req,res)=> {
+    console.log(req.url)
+    //为了维持session信息注入userInfo
+    const context = {url: req.url ,userInfo: req.userInfo};
+    createApp(context).then(app=> {
+        renderer.renderToString(app,context,(err,html)=> {
+            if(err){
+                return res.status(500).end(err.toString())
+            }
+            res.end(html)
+        })
+    },(err)=> {
+        res.status(404).end(err.toString());
+    })
+});
+
 app.listen(80,'localhost',function(){
     console.log('listening...')
 });

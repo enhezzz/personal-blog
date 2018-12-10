@@ -1,0 +1,21 @@
+
+.login[data-v-621a7619]{
+    margin-top: 200px;
+    justify-content: center
+}
+/* .login>.login-header>h3{
+    width: 66%;
+    margin: 0 auto
+} */
+.alert-success[data-v-621a7619],.alert-danger[data-v-621a7619]{
+    position: absolute;
+    top: 198px;
+    visibility: hidden;
+    animation-fill-mode: both;
+    animation-duration: 2s;
+    animation-timing-function: ease-in
+}
+.show[data-v-621a7619]{
+    visibility: visible
+}
+

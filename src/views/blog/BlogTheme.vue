@@ -44,23 +44,26 @@
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 export default {
+    asyncData({store, route}) {
+        return store.dispatch('blog/getPosts',route)
+    },
     created: function(){
-        NProgress.start()
-        this.request(this.$route).then(res=>{
-            NProgress.done()
-        });
+        // NProgress.start()
+        // this.request(this.$route).then(res=>{
+        //     NProgress.done()
+        // });
 
     },
     data: function(){
         return {
-            posts: [],
+            // posts: [],
             currentPage: 1
         }
     },
-    async beforeRouteUpdate (to,from,next){
-        await this.request(to);
-        next();
-    },
+    // async beforeRouteUpdate (to,from,next){
+    //     await this.request(to);
+    //     next();
+    // },
     computed: {
         theme(){
             return encodeURIComponent(this.$route.params.theme);
@@ -81,6 +84,9 @@ export default {
                     return index+2+this.pageNum-this.currentPage;
                 });
             }
+        },
+        posts(){
+            return this.$store.state.blog.posts;
         }
     },
     methods: {

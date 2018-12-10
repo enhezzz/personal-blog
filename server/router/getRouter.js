@@ -58,7 +58,8 @@ router.get('/blogList',(req,res)=>{
         res.json(tags).end();
     })
 })
-router.get('/blog/:theme',(req,res)=>{
+router.get('/b/:theme',(req,res)=>{
+    // console.log(req.params.theme)
     let theme = decodeURIComponent(req.params.theme);
     let pageIndex = req.query.index || 0;
     postModel.find({tags: theme}).limit(10).skip(pageIndex*10).select('author title tags views updateDate content')

@@ -49,51 +49,79 @@
         </div>
         <div class="col-12 footer" ref="footer"></div>
       </div>
-      
+
+
+
     </div>
   </div>
 </template>
 
 <script>
 import NProgress from 'nprogress'
-
+import axios from 'axios'
+import homeModule from '../store/home'
 export default {
   name: 'home',
+    asyncData: ({store})=> {
+      store.registerModule('home',homeModule);
+      return store.dispatch('home/getPost')
+    },
   mounted: function(){
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries[0].intersectionRatio <= 0) return;
       this.pageIndex++;
-      this.getPost().then(posts=>{
-            this.posts.push(...posts);
-        })
+      this.$store.dispatch('home/getPost')
+
+      // this.getPost().then(response=>{
+      //       this.posts.push(response.data);
+      //   })
       console.log(entries[0].intersectionRatio)
     });
     // start observing
+      console.log(this)
+      console.log(this.$refs)
+      console.log(this.$refs.footer)
     intersectionObserver.observe(this.$refs.footer);
-    console.log(this.$refs.footer)
-  },
-  created: function(){
-      NProgress.start();
-      this.getPost().then(posts=>{
-          this.posts.push(...posts);
-          NProgress.done()
-      })
 
   },
-    data(){
-      return {
-          posts: [],
-          pageIndex: 0
-      }
+  created: async function(){
+      // NProgress.start();
+      // const response = await this.getPost();
+      //
+      // this.posts.push(...(response.data));
+
+
+  },
+    // data(){
+    //   return {
+    //       pageIndex: 0
+    //   }
+    // },
+    computed: {
+          posts(){
+              return this.$store.state.home.posts;
+          },
+          pageIndex: {
+              set(pageIndex) {
+                  this.$store.commit('home/updatePageIndex', pageIndex);
+              },
+              get() {
+                  return this.$store.state.home.pageIndex;
+              }
+
+          }
     },
+    destroyed(){
+      this.$store.unregisterModule('home')
+    },
+
     methods: {
        getPost(){
-          let request = new Request(`/homePost?index=${this.pageIndex}`);
-          let formData = new FormData();
-          formData.append('index',this.pageIndex);
-          return fetch(request).then(response=>{
-              return response.json()
-          })
+           const url = `/homePost?index=${this.pageIndex}`;
+           return axios.get(url)
+          // return fetch(request).then(response=>{
+          //     return response.json()
+          // })
       }
     }
 }

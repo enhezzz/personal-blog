@@ -1,0 +1,27 @@
+
+.container>.header[data-v-90aef5a0]{
+    text-align: left;
+}
+.main>.card[data-v-90aef5a0]:hover{
+    animation: pulse 1s both;
+    text-decoration: none;
+}
+.main .card-header[data-v-90aef5a0]{
+    text-align: left;
+}
+.main .card-header>span[data-v-90aef5a0]{
+    display: inline-block;
+    margin-right: 10px;
+}
+.main .card-header>span.fa-eye[data-v-90aef5a0]{
+    float: right;
+    color: rgb(198,198,198);
+}
+.main .card-body[data-v-90aef5a0]{
+    color: #7f7f7f;
+}
+.main .card-body>.card-text[data-v-90aef5a0]{
+    text-align: left;
+    text-indent: 49px;
+}
+
